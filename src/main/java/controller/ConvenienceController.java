@@ -3,8 +3,10 @@ package controller;
 import fileIo.ProductsReader;
 import fileIo.PromotionsReader;
 import fileIo.ResourceReader;
+import fileIo.parser.OrderProductsParser;
 import fileIo.parser.ProductsParser;
 import fileIo.parser.PromotionsParser;
+import store.OrderProducts;
 import store.Products;
 import store.Promotions;
 import view.InputView;
@@ -25,12 +27,25 @@ public class ConvenienceController {
     }
 
     public void startPayment() {
-        outputView.welcome();
+        welcome();
+        Products products = createProducts();
 
+        OrderProductsParser orderProductsParser = new OrderProductsParser(products);
+        OrderProducts orderProducts = orderProductsParser.parse(inputView.inputProductAndCount());
+        
+    }
+
+    private void welcome() {
+        outputView.welcome();
+    }
+
+    private Products createProducts() {
         PromotionsParser promotionsParser = new PromotionsParser();
         Promotions promotions = promotionsParser.parse(promotionsReader.read());
         ProductsParser productsParser = new ProductsParser(promotions);
         Products products = productsParser.parse(productsReader.read());
         outputView.showProducts(products);
+
+        return products;
     }
 }

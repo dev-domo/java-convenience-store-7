@@ -45,4 +45,8 @@ public class Product {
         }
         return promotion.toNameString();
     }
+
+    public boolean isSameName(String name) {
+        return this.name.equals(name);
+    }
 }

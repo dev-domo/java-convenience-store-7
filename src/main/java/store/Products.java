@@ -13,6 +13,12 @@ public class Products {
         this.products = products;
     }
 
+    public Product findProductByName(String name) {
+        return products.stream().filter(product -> product.isSameName(name))
+                .findFirst()
+                .orElse(null);
+    }
+
     @Override
     public String toString() {
         return products.stream()
