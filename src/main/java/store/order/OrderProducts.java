@@ -1,8 +1,9 @@
-package store;
+package store.order;
 
 import java.util.Map;
 import java.util.Map.Entry;
 import store.product.Product;
+import store.product.PromotionProduct;
 import view.InputView;
 
 public class OrderProducts {

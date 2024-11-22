@@ -2,11 +2,11 @@ package fileIo.parser;
 
 import java.util.ArrayList;
 import java.util.List;
-import store.Promotion;
-import store.PromotionProduct;
-import store.Promotions;
 import store.product.Product;
 import store.product.Products;
+import store.product.PromotionProduct;
+import store.promotion.Promotion;
+import store.promotion.Promotions;
 
 public class ProductsParser implements Parser {
 

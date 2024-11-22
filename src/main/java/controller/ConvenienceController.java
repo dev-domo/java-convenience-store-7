@@ -6,11 +6,11 @@ import fileIo.ResourceReader;
 import fileIo.parser.OrderProductsParser;
 import fileIo.parser.ProductsParser;
 import fileIo.parser.PromotionsParser;
-import store.OrderProducts;
-import store.Payment;
-import store.Promotions;
-import store.Receipt;
+import store.order.OrderProducts;
+import store.order.Payment;
 import store.product.Products;
+import store.promotion.Promotions;
+import store.receipt.Receipt;
 import view.InputView;
 import view.OutputView;
 

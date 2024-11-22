@@ -1,7 +1,6 @@
 package store.product;
 
 import java.text.DecimalFormat;
-import store.PromotionProduct;
 
 public class Product {
 

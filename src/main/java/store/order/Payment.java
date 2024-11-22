@@ -1,7 +1,9 @@
-package store;
+package store.order;
 
 import java.util.Map.Entry;
+import store.membership.Membership;
 import store.product.Product;
+import store.receipt.Receipt;
 
 public class Payment {
 

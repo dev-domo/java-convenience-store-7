@@ -3,8 +3,8 @@ package fileIo.parser;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import store.Promotion;
-import store.Promotions;
+import store.promotion.Promotion;
+import store.promotion.Promotions;
 
 public class PromotionsParser implements Parser {
 

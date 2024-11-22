@@ -1,6 +1,6 @@
-package store;
+package store.product;
 
-import store.product.Product;
+import store.promotion.Promotion;
 
 public class PromotionProduct extends Product {
 

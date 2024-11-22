@@ -1,4 +1,4 @@
-package store;
+package store.receipt;
 
 import java.util.Map;
 import java.util.Map.Entry;

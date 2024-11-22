@@ -1,8 +1,8 @@
 package view;
 
 import constants.OutputMessage;
-import store.Receipt;
 import store.product.Products;
+import store.receipt.Receipt;
 
 public class OutputView {
 
