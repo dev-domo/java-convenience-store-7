@@ -2,6 +2,7 @@ package view;
 
 import constants.OutputMessage;
 import store.Products;
+import store.Receipt;
 
 public class OutputView {
 
@@ -12,5 +13,9 @@ public class OutputView {
     public void showProducts(Products products) {
         System.out.println(OutputMessage.CURRENT_PRODUCTS_STATE_MESSAGE.valueOf());
         System.out.println(products);
+    }
+
+    public void showReceipt(Receipt receipt) {
+
     }
 }
