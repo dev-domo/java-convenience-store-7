@@ -7,8 +7,10 @@ import fileIo.parser.OrderProductsParser;
 import fileIo.parser.ProductsParser;
 import fileIo.parser.PromotionsParser;
 import store.OrderProducts;
-import store.Products;
+import store.Payment;
 import store.Promotions;
+import store.Receipt;
+import store.product.Products;
 import view.InputView;
 import view.OutputView;
 
@@ -27,12 +29,26 @@ public class ConvenienceController {
     }
 
     public void startPayment() {
-        welcome();
-        Products products = createProducts();
+        do {
+            welcome();
+            OrderProducts orderProducts = createOrderProducts(createProducts());
+            Receipt receipt = progressOrder(orderProducts);
+            introduceReceipt(receipt);
+        } while (inputView.inputRetry());
+    }
 
+    private void introduceReceipt(Receipt receipt) {
+        outputView.showReceipt(receipt);
+    }
+
+    private Receipt progressOrder(OrderProducts orderProducts) {
+        Payment order = new Payment(orderProducts.checkOrderDetails());
+        return order.progress(inputView.inputAdaptedMembership());
+    }
+
+    private OrderProducts createOrderProducts(Products products) {
         OrderProductsParser orderProductsParser = new OrderProductsParser(products);
-        OrderProducts orderProducts = orderProductsParser.parse(inputView.inputProductAndCount());
-        
+        return orderProductsParser.parse(inputView.inputProductAndCount());
     }
 
     private void welcome() {

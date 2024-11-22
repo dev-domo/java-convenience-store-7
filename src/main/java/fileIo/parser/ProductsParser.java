@@ -2,10 +2,11 @@ package fileIo.parser;
 
 import java.util.ArrayList;
 import java.util.List;
-import store.Product;
-import store.Products;
 import store.Promotion;
+import store.PromotionProduct;
 import store.Promotions;
+import store.product.Product;
+import store.product.Products;
 
 public class ProductsParser implements Parser {
 
@@ -29,10 +30,21 @@ public class ProductsParser implements Parser {
         List<Product> products = new ArrayList<>();
         for (String line : lines) {
             String[] information = line.split(SEPARATOR);
-            products.add(new Product(extractName(information), extractPrice(information), extractQuantity(information),
-                    extractPromotion(information)));
+            addRegularProduct(information, products);
+            addPromotionProduct(products, information);
         }
         return products;
+    }
+
+    private void addPromotionProduct(List<Product> products, String[] information) {
+        products.add(new PromotionProduct(extractName(information), extractPrice(information),
+                extractQuantity(information),
+                extractPromotion(information)));
+    }
+
+    private void addRegularProduct(String[] information, List<Product> products) {
+        products.add(
+                new Product(extractName(information), extractPrice(information), extractQuantity(information)));
     }
 
     private String extractName(String[] information) {

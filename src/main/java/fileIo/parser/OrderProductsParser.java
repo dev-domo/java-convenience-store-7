@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import store.OrderProducts;
-import store.Product;
-import store.Products;
+import store.product.Product;
+import store.product.Products;
 
 public class OrderProductsParser implements Parser {
 

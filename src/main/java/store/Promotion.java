@@ -26,4 +26,20 @@ public class Promotion {
     public String toNameString() {
         return " " + name;
     }
+
+    public int calculateNotAdaptedPurchaseCount(int purchaseCount) {
+        return purchaseCount % (buy + get);
+    }
+
+    public boolean lessThanBuy(int purchaseCount) {
+        return purchaseCount < buy;
+    }
+
+    public int calculateMoreFreeProductCount(int purchaseCount) {
+        return buy - purchaseCount;
+    }
+
+    public int calculateDiscount(int purchaseCount) {
+        return purchaseCount / (buy + get);
+    }
 }
