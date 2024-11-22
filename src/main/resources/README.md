@@ -1,8 +1,8 @@
 ## 기능 구현 목록
 
-- [X] InputView, OutputView 생성
+- [X] InputView, OutputView 생성 **(Done)**
 - [X] 프로그램 흐름
-    - 상품, 프로모션 입력받기
+    - 상품, 프로모션 입력받기 **(Done)**
     - 환영 메시지 출력
     - 보유 상품 출력
     - 사용자가 구매 상품 및 수량 입력
