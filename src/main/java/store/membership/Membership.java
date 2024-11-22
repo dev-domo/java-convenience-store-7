@@ -6,6 +6,7 @@ public class Membership {
     private static final int MAX_BOUND = 8_000;
 
     public int calculateDiscount(int total) {
-        return Math.min((int) (total * DISCOUNT_RATE), MAX_BOUND);
+        int result = Math.min((int) (total * DISCOUNT_RATE), MAX_BOUND);
+        return result;
     }
 }

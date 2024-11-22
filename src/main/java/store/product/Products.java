@@ -25,4 +25,14 @@ public class Products {
                 .map(Product::toString)
                 .collect(Collectors.joining(LINE_CHANGE));
     }
+
+    public boolean isPromotional(Product compareProduct) {
+        Product find = products.stream()
+                .filter(product -> product instanceof PromotionProduct)
+                .filter(product -> product.equals(compareProduct))
+                .findFirst()
+                .orElse(null);
+
+        return find != null;
+    }
 }

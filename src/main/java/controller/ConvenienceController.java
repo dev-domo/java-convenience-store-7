@@ -31,8 +31,9 @@ public class ConvenienceController {
     public void startPayment() {
         do {
             welcome();
-            OrderProducts orderProducts = createOrderProducts(createProducts());
-            Receipt receipt = progressOrder(orderProducts);
+            Products products = createProducts();
+            OrderProducts orderProducts = createOrderProducts(products);
+            Receipt receipt = progressOrder(orderProducts, products);
             introduceReceipt(receipt);
         } while (inputView.inputRetry());
     }
@@ -41,8 +42,8 @@ public class ConvenienceController {
         outputView.showReceipt(receipt);
     }
 
-    private Receipt progressOrder(OrderProducts orderProducts) {
-        Payment order = new Payment(orderProducts.checkOrderDetails());
+    private Receipt progressOrder(OrderProducts orderProducts, Products products) {
+        Payment order = new Payment(orderProducts.checkOrderDetails(), products);
         return order.progress(inputView.inputAdaptedMembership());
     }
 

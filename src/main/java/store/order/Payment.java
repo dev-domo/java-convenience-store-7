@@ -3,16 +3,20 @@ package store.order;
 import java.util.Map.Entry;
 import store.membership.Membership;
 import store.product.Product;
+import store.product.Products;
+import store.product.PromotionProduct;
 import store.receipt.Receipt;
 
 public class Payment {
 
     private final OrderProducts orderProducts;
     private final Membership membership;
+    private final Products products;
 
-    public Payment(final OrderProducts orderProducts) {
+    public Payment(final OrderProducts orderProducts, final Products products) {
         this.orderProducts = orderProducts;
         this.membership = new Membership();
+        this.products = products;
     }
 
     public Receipt progress(boolean hasMembership) {
@@ -27,7 +31,7 @@ public class Payment {
 
             total += product.calculateTotal(purchaseCount);
             promotionDiscount += product.calculatePromotionDiscount(purchaseCount);
-            if (hasMembership && !product.isPromotional()) {
+            if (hasMembership && !products.isPromotional(product)) {
                 membershipDiscount += membership.calculateDiscount(total);
             }
         }
@@ -36,6 +40,11 @@ public class Payment {
     }
 
     private void reduceInventory(Product product, int purchaseCount) {
+        if (product.isPromotional()) {
+            PromotionProduct promotionProduct = (PromotionProduct) product;
+            promotionProduct.deduct(purchaseCount);
+            return;
+        }
         product.deduct(purchaseCount);
     }
 }
