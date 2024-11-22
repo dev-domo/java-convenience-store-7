@@ -31,7 +31,7 @@ public class Payment {
 
             total += product.calculateTotal(purchaseCount);
             promotionDiscount += product.calculatePromotionDiscount(purchaseCount);
-            if (hasMembership && !products.isPromotional(product)) {
+            if (hasMembership && !product.isPromotional()) {
                 membershipDiscount += membership.calculateDiscount(total);
             }
         }
