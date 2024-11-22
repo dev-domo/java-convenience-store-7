@@ -1,4 +1,4 @@
-package fileIo.parser;
+package store;
 
 public class Product {
 

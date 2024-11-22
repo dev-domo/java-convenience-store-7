@@ -1,6 +1,5 @@
 package store;
 
-import fileIo.parser.Product;
 import java.util.List;
 
 public class Products {
