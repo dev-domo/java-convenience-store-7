@@ -28,7 +28,7 @@ public class OrderProductsParser implements Parser {
         Map<Product, Integer> orders = new HashMap<>();
         Matcher matcher;
 
-        for (String line : lines) {
+        for (String line : lines.getFirst().split(",")) {
             matcher = PATTERN.matcher(line);
             checkInputFormat(matcher);
             Product product = products.findProductByName(extractName(matcher));
